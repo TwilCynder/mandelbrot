@@ -13,7 +13,7 @@ using namespace std::chrono;
 
 using namespace mandelbrot;
 
-constexpr int ITERATIONS = 40;
+constexpr int ITERATIONS = 500;
 
 inline bool mandelbrot::isInSet(int i){
     return i >= ITERATIONS;
@@ -91,6 +91,12 @@ double durationToSeconds(Duration duration){
 }
 
 std::ostream& mandelbrot::operator<<(std::ostream& out, const AreaView& view){
+    out << view.xlow << " " << view.xup << " " << view.ylow << " " << view.yup;
+    return out;
+}
+
+std::ostream &mandelbrot::operator<<(std::ostream &out, const PointView &view)
+{
     out << view.x << " " << view.y << " " << view.w << " " << view.h;
     return out;
 }
@@ -136,8 +142,9 @@ void mandelbrot::drawAtPoint(SDL_Surface* surface, const double x, const double 
 }
 
 void mandelbrot::draw(SDL_Surface* surface, const AreaView& view){
-    drawAtArea(surface, view.x, view.y, view.w, view.h);
+    drawAtArea(surface, view.xlow, view.xup, view.ylow, view.yup);
 }
+
 
 void mandelbrot::draw(SDL_Surface* surface, const PointView& view){
     drawAtPoint(surface, view.x, view.y, view.w, view.h);

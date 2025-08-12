@@ -10,20 +10,23 @@ namespace mandelbrot{
     int testPoint(Complex c);
 
     struct AreaView {
-        double x;
-        double y;
-        double w;
-        double h;
+        double xlow;
+        double xup;
+        double ylow;
+        double yup;
     };
 
+    
     struct PointView {
         double x;
         double y;
         double w;
         double h;
     };
+    
 
     std::ostream& operator<<(std::ostream& out, const AreaView& view);
+    std::ostream& operator<<(std::ostream& out, const PointView& view);
 
     void draw(SDL_Surface*, const AreaView& view);
     void draw(SDL_Surface*, const PointView& view);
