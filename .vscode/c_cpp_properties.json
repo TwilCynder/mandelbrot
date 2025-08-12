@@ -1,0 +1,57 @@
+{
+    "configurations": [
+        {
+            "name": "MSYS C++20",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${MSYSTEM_PREFIX}/include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "${MSYSTEM_PREFIX}/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "gnu++20",
+            "intelliSenseMode": "windows-gcc-x64",
+            "configurationProvider": "ms-vscode.cpptools"
+        },
+        {
+            "name": "MSYS C++20 MP",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/c++/include",
+                "${MSYS_PATH}/include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "${MSYS_PATH}/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "gnu++20",
+            "intelliSenseMode": "windows-gcc-x64",
+            "configurationProvider": "ms-vscode.cpptools"
+        },
+        {
+            "name": "Ubuntu C++20",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/c++/include",
+                "/usr/include/SDL2"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "gnu17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
