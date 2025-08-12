@@ -13,7 +13,7 @@ using namespace std::chrono;
 
 using namespace mandelbrot;
 
-constexpr int ITERATIONS = 150;
+constexpr int ITERATIONS = 40;
 
 inline bool mandelbrot::isInSet(int i){
     return i >= ITERATIONS;
@@ -98,7 +98,7 @@ std::ostream& mandelbrot::operator<<(std::ostream& out, const AreaView& view){
 inline Uint32 get_color(int res){
     constexpr double color_step = 1.0 / ITERATIONS;
 
-    return hsv2rgb((1 - (color_step * res)) * 360 , 1.0, color_step * res);
+    return hsv2rgb(((color_step * res)) * 360 , 1.0, color_step * res);
 }
 
 void draw_(SDL_Surface* surface, const double x_lower, const double y_lower, const double ratio){

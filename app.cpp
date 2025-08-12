@@ -1,17 +1,14 @@
 #include "app.h"
-void App::setTexture(SDL_Surface* surf){
-	setTexture(SDL_CreateTextureFromSurface(renderer, surf));
+#include <iostream>
 
+App::App(int width, int height, int depth) : current_tex(nullptr)
+{
+	render_surface = SDL_CreateRGBSurface(0, width, height, depth, 0, 0, 0, 0);
 }
 
-void App::setTexture(SDL_Texture* tex){
-	current_tex = tex;
-}
-
-void App::draw(){
-	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, current_tex, NULL, NULL);
-	SDL_RenderPresent(renderer);
+App::~App()
+{
+	SDL_FreeSurface(render_surface);
 }
 
 void App::initSDL(){
@@ -43,6 +40,30 @@ void App::initSDL(){
 		exit(1);
 	}
 }
+
+
+void App::draw(){
+	if (!current_tex) return;
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, current_tex, NULL, NULL);
+	SDL_RenderPresent(renderer);
+}
+
+void App::setTexture(SDL_Surface* surf){
+	auto tex = SDL_CreateTextureFromSurface(renderer, surf);
+	setTexture(tex);
+}
+
+void App::setTexture(SDL_Texture* tex){
+	current_tex = tex;
+}
+
+void App::setView(const mandelbrot::AreaView &view)
+{
+	mandelbrot::draw(render_surface, view);
+	setTexture(render_surface);
+}
+
 
 void App::loop(){
 	SDL_Event event;

@@ -1,4 +1,6 @@
 #pragma once
+#include <ostream>
+
 class Complex;
 struct SDL_Surface;
 
